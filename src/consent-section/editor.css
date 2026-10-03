@@ -1,0 +1,11 @@
+.bce-section-editor {
+	border: 1px dashed currentColor;
+	border-radius: 0.375rem;
+	padding: 0.75rem;
+}
+
+.bce-section-editor__label {
+	margin: 0 0 0.75rem;
+	font-size: 0.8em;
+	opacity: 0.75;
+}

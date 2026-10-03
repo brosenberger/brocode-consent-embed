@@ -4,3 +4,4 @@ parameters:
         - brocode-consent-embed.php
         - includes
         - src/consent-embed/render.php
+        - src/consent-section/render.php

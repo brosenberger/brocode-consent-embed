@@ -1,0 +1,65 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "brocode/consent-section",
+  "version": "1.0.0",
+  "title": "Consent Section",
+  "category": "embed",
+  "icon": "lock",
+  "description": "Wraps any blocks — a third-party widget, a custom HTML embed, a group of embeds — and renders them only after the visitor consents to the named service.",
+  "keywords": [
+    "gdpr",
+    "privacy",
+    "consent",
+    "embed",
+    "html",
+    "widget"
+  ],
+  "textdomain": "brocode-consent-embed",
+  "supports": {
+    "html": false,
+    "anchor": true,
+    "align": [
+      "wide",
+      "full"
+    ],
+    "spacing": {
+      "margin": true
+    }
+  },
+  "attributes": {
+    "provider": {
+      "type": "string",
+      "default": "custom"
+    },
+    "serviceName": {
+      "type": "string",
+      "default": ""
+    },
+    "company": {
+      "type": "string",
+      "default": ""
+    },
+    "category": {
+      "type": "string",
+      "default": "marketing"
+    },
+    "title": {
+      "type": "string",
+      "default": ""
+    },
+    "notice": {
+      "type": "string",
+      "default": ""
+    },
+    "minHeight": {
+      "type": "number",
+      "default": 0
+    }
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "brocode-consent-embed-style",
+  "viewScript": "brocode-consent-embed-view-script",
+  "render": "file:./render.php"
+}

@@ -39,6 +39,8 @@ if (!defined('ABSPATH')) {
 }
 
 /**
+ * Placeholder for a single iframe embed (the block and core oEmbeds).
+ *
  * @param array{provider: string, src: string} $resolved From resolve().
  * @param array{title?: string, notice?: string, height?: int, link?: string, wrapper?: string} $args
  *        wrapper: pre-built attribute string (the block passes get_block_wrapper_attributes()).
@@ -46,27 +48,48 @@ if (!defined('ABSPATH')) {
 function placeholder(array $resolved, array $args = []): string
 {
     $provider = providers()[$resolved['provider']] ?? null;
-    if ($provider === null) {
+    if (!is_array($provider)) {
         return '';
     }
 
-    $label  = (string) $provider['label'];
+    $service = [
+        'id'       => $resolved['provider'],
+        'label'    => (string) ($provider['label'] ?? $resolved['provider']),
+        'company'  => (string) ($provider['company'] ?? ''),
+        'category' => consent_category((string) ($provider['category'] ?? '')),
+    ];
+    $args['wrapper'] ??= sprintf('class="bce-embed" style="%s"', esc_attr(placeholder_style($resolved, (int) ($args['height'] ?? 450))));
+    $args['link']      = (string) ($args['link'] ?? '') !== '' ? (string) $args['link'] : $resolved['src'];
+
+    return gate($service, $args + ['src' => $resolved['src']]);
+}
+
+/**
+ * The consent notice around either an iframe URL (src) or inert block markup
+ * (content, kept in a <template> until consent).
+ *
+ * @param array{id: string, label: string, company: string, category: string} $service
+ * @param array{title?: string, notice?: string, wrapper: string, src?: string, link?: string, content?: string} $args
+ */
+function gate(array $service, array $args): string
+{
+    $label  = $service['label'];
     $title  = (string) ($args['title'] ?? '') !== '' ? (string) $args['title'] : $label;
     $notice = (string) ($args['notice'] ?? '') !== ''
         ? str_replace('%s', $label, (string) $args['notice'])
         /* translators: 1: service name, e.g. YouTube, 2: company receiving the data, e.g. Google */
-        : sprintf(__('This content is provided by %1$s. Loading it sends data such as your IP address to %2$s.', 'brocode-consent-embed'), $label, $provider['company']);
-
-    $wrapper = $args['wrapper'] ?? sprintf('class="bce-embed" style="%s"', esc_attr(placeholder_style($resolved, (int) ($args['height'] ?? 450))));
-    $policy  = get_privacy_policy_url();
-    $link    = (string) ($args['link'] ?? '') !== '' ? (string) $args['link'] : $resolved['src'];
+        : sprintf(__('This content is provided by %1$s. Loading it sends data such as your IP address to %2$s.', 'brocode-consent-embed'), $label, $service['company']);
+    $policy = get_privacy_policy_url();
+    $link   = (string) ($args['link'] ?? '');
 
     ob_start();
     ?>
-<div <?php echo $wrapper; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- built from esc_attr() / get_block_wrapper_attributes(). ?>
-    data-bce-src="<?php echo esc_url($resolved['src']); ?>"
-    data-bce-provider="<?php echo esc_attr($resolved['provider']); ?>"
-    data-bce-category="<?php echo esc_attr((string) $provider['category']); ?>"
+<div <?php echo $args['wrapper']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- built from esc_attr() / get_block_wrapper_attributes(). ?>
+    <?php if (isset($args['src'])) : ?>
+    data-bce-src="<?php echo esc_url($args['src']); ?>"
+    <?php endif; ?>
+    data-bce-provider="<?php echo esc_attr($service['id']); ?>"
+    data-bce-category="<?php echo esc_attr($service['category']); ?>"
     data-bce-title="<?php echo esc_attr($title); ?>">
     <div class="bce-embed__notice">
         <p class="bce-embed__heading"><?php echo esc_html($title); ?></p>
@@ -92,9 +115,14 @@ function placeholder(array $resolved, array $args = []): string
                 echo esc_html(sprintf(__('Always load %s on this site', 'brocode-consent-embed'), $label));
                 ?>
             </label>
+            <?php if ($link !== '') : ?>
             <a href="<?php echo esc_url($link); ?>" target="_blank" rel="noopener noreferrer"><?php esc_html_e('Open in new tab', 'brocode-consent-embed'); ?></a>
+            <?php endif; ?>
         </p>
     </div>
+    <?php if (isset($args['content'])) : ?>
+    <template class="bce-embed__content"><?php echo $args['content']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- rendered inner blocks, escaped by their own render. ?></template>
+    <?php endif; ?>
 </div>
     <?php
     wp_enqueue_script('brocode-consent-embed-view-script');

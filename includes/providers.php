@@ -192,3 +192,52 @@ function vimeo_embed_url(array $parts): ?string
 
     return 'https://player.vimeo.com/video/' . $m[1] . '?dnt=1' . ($hash !== '' ? '&h=' . $hash : '');
 }
+
+/**
+ * Service behind a consent section: a registered provider, or a custom service
+ * the editor named. The id keys the visitor's "always load" choice, so a custom
+ * service gets a stable id derived from its name.
+ *
+ * @param array<string, mixed> $attributes Block attributes of brocode/consent-section.
+ * @return array{id: string, label: string, company: string, category: string}|null
+ */
+function section_service(array $attributes): ?array
+{
+    $provider = (string) ($attributes['provider'] ?? 'custom');
+
+    if ($provider !== 'custom') {
+        $registered = providers()[$provider] ?? null;
+        if (!is_array($registered)) {
+            return null;
+        }
+        return [
+            'id'       => $provider,
+            'label'    => (string) ($registered['label'] ?? $provider),
+            'company'  => (string) ($registered['company'] ?? ''),
+            'category' => consent_category((string) ($registered['category'] ?? '')),
+        ];
+    }
+
+    $label = trim((string) ($attributes['serviceName'] ?? ''));
+    if ($label === '') {
+        return null;
+    }
+    $company = trim((string) ($attributes['company'] ?? ''));
+
+    return [
+        'id'       => 'custom-' . sanitize_title($label),
+        'label'    => $label,
+        'company'  => $company !== '' ? $company : $label,
+        'category' => consent_category((string) ($attributes['category'] ?? '')),
+    ];
+}
+
+/**
+ * WP Consent API categories; anything else falls back to marketing, the strictest.
+ */
+function consent_category(string $category): string
+{
+    return in_array($category, ['functional', 'preferences', 'statistics', 'statistics-anonymous', 'marketing'], true)
+        ? $category
+        : 'marketing';
+}

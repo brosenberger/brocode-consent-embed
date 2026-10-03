@@ -72,3 +72,11 @@
 	inset: 0;
 	aspect-ratio: auto;
 }
+
+/* A revealed section is ordinary page content: no placeholder box around it. */
+.bce-embed--section.is-loaded {
+	min-height: 0;
+	overflow: visible;
+	border-radius: 0;
+	background: none;
+}

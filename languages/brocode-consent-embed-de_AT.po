@@ -7,12 +7,10 @@ msgstr ""
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8
-"
-"Plural-Forms: nplurals=2; plural=(n != 1);
-"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-03T14:31:55+02:00\n"
+"POT-Creation-Date: 2026-10-03T15:51:24+02:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: brocode-consent-embed\n"
@@ -24,19 +22,23 @@ msgid "BroCode Consent Embed"
 msgstr "BroCode Consent Embed"
 
 #. Plugin URI of the plugin
-#. Author URI of the plugin
 #: brocode-consent-embed.php
-msgid "https://brocode.at"
+msgid "https://brocode.at/modules/brocode-consent-embed/"
 msgstr ""
 
 #. Description of the plugin
 #: brocode-consent-embed.php
-msgid "Click-to-load embeds for Google Maps, Google Calendar, YouTube, Vimeo and OpenStreetMap. Nothing is loaded from the third party until the visitor consents. Also gates existing YouTube and Vimeo embeds, and honours the WP Consent API."
-msgstr "Einbettungen per Klick für Google Maps, Google Kalender, YouTube, Vimeo und OpenStreetMap. Vom Drittanbieter wird erst nach Zustimmung etwas geladen. Sichert auch bestehende YouTube- und Vimeo-Einbettungen ab und berücksichtigt die WP Consent API."
+msgid "Click-to-load embeds for Google Maps, Google Calendar, YouTube, Vimeo and OpenStreetMap, plus a consent section that holds back any blocks until the visitor agrees. Also gates existing YouTube and Vimeo embeds, and honours the WP Consent API."
+msgstr "Einbettungen per Klick für Google Maps, Google Kalender, YouTube, Vimeo und OpenStreetMap, dazu ein Zustimmungsbereich, der beliebige Blöcke bis zur Zustimmung zurückhält. Sichert auch bestehende YouTube- und Vimeo-Einbettungen ab und berücksichtigt die WP Consent API."
 
 #. Author of the plugin
 #: brocode-consent-embed.php
 msgid "Benjamin Rosenberger"
+msgstr ""
+
+#. Author URI of the plugin
+#: brocode-consent-embed.php
+msgid "https://brocode.at"
 msgstr ""
 
 #: build/consent-embed/render.php:44
@@ -64,28 +66,28 @@ msgid "OpenStreetMap"
 msgstr ""
 
 #. translators: 1: service name, e.g. YouTube, 2: company receiving the data, e.g. Google
-#: includes/render.php:58
+#: includes/render.php:81
 #, php-format
 msgid "This content is provided by %1$s. Loading it sends data such as your IP address to %2$s."
 msgstr "Dieser Inhalt wird von %1$s bereitgestellt. Beim Laden werden Daten wie deine IP-Adresse an %2$s übertragen."
 
-#: includes/render.php:76
+#: includes/render.php:99
 msgid "Privacy policy"
 msgstr "Datenschutzerklärung"
 
 #. translators: %s: service name, e.g. YouTube
-#: includes/render.php:83
+#: includes/render.php:106
 #, php-format
 msgid "Load %s"
 msgstr "%s laden"
 
 #. translators: %s: service name, e.g. YouTube
-#: includes/render.php:92
+#: includes/render.php:115
 #, php-format
 msgid "Always load %s on this site"
 msgstr "%s auf dieser Website immer laden"
 
-#: includes/render.php:95
+#: includes/render.php:119
 msgid "Open in new tab"
 msgstr "In neuem Tab öffnen"
 
@@ -106,10 +108,12 @@ msgid "Title (for screen readers)"
 msgstr "Titel (für Screenreader)"
 
 #: build/consent-embed/index.js:1
+#: build/consent-section/index.js:1
 msgid "Privacy notice"
 msgstr "Datenschutz-Hinweis"
 
 #: build/consent-embed/index.js:1
+#: build/consent-section/index.js:1
 #, js-format
 msgid "Leave empty for the default text. %s is replaced with the service name."
 msgstr "Leer lassen für den Standardtext. %s wird durch den Namen des Dienstes ersetzt."
@@ -117,6 +121,76 @@ msgstr "Leer lassen für den Standardtext. %s wird durch den Namen des Dienstes 
 #: build/consent-embed/index.js:1
 msgid "Height (px, maps and calendars)"
 msgstr "Höhe (px, Karten und Kalender)"
+
+#: build/consent-section/index.js:1
+msgid "Marketing"
+msgstr "Marketing"
+
+#: build/consent-section/index.js:1
+msgid "Statistics"
+msgstr "Statistik"
+
+#: build/consent-section/index.js:1
+msgid "Statistics (anonymous)"
+msgstr "Statistik (anonym)"
+
+#: build/consent-section/index.js:1
+msgid "Preferences"
+msgstr "Präferenzen"
+
+#: build/consent-section/index.js:1
+msgid "Functional"
+msgstr "Funktional"
+
+#: build/consent-section/index.js:1
+msgid "Service"
+msgstr "Dienst"
+
+#: build/consent-section/index.js:1
+msgid "Other service…"
+msgstr "Anderer Dienst …"
+
+#: build/consent-section/index.js:1
+msgid "Service name"
+msgstr "Name des Dienstes"
+
+#: build/consent-section/index.js:1
+msgid "Shown on the button, e.g. Instagram or Calendly. Visitors who tick \"always load\" are remembered per service name."
+msgstr "Steht auf dem Button, z. B. Instagram oder Calendly. „Immer laden“ wird pro Dienstname gespeichert."
+
+#: build/consent-section/index.js:1
+msgid "Company receiving the data"
+msgstr "Unternehmen, das die Daten erhält"
+
+#: build/consent-section/index.js:1
+msgid "Defaults to the service name."
+msgstr "Standard ist der Name des Dienstes."
+
+#: build/consent-section/index.js:1
+msgid "Consent category (WP Consent API)"
+msgstr "Zustimmungskategorie (WP Consent API)"
+
+#: build/consent-section/index.js:1
+msgid "Heading"
+msgstr "Überschrift"
+
+#: build/consent-section/index.js:1
+msgid "Placeholder minimum height (px, 0 = auto)"
+msgstr "Mindesthöhe des Platzhalters (px, 0 = automatisch)"
+
+#. translators: %s: service name
+#: build/consent-section/index.js:2
+#, js-format
+msgid "Loads only after consent to %s"
+msgstr "Lädt erst nach Zustimmung zu %s"
+
+#: build/consent-section/index.js:2
+msgid "Name the service in the block settings. Until then nothing renders on the site."
+msgstr "Gib den Dienst in den Block-Einstellungen an. Bis dahin wird auf der Website nichts angezeigt."
+
+#: build/consent-section/index.js:2
+msgid "No service named yet."
+msgstr "Noch kein Dienst angegeben."
 
 #: build/consent-embed/block.json
 msgctxt "block title"
@@ -149,21 +223,45 @@ msgid "vimeo"
 msgstr ""
 
 #: build/consent-embed/block.json
+#: build/consent-section/block.json
 msgctxt "block keyword"
 msgid "gdpr"
 msgstr "dsgvo"
 
 #: build/consent-embed/block.json
+#: build/consent-section/block.json
 msgctxt "block keyword"
 msgid "privacy"
 msgstr "datenschutz"
 
 #: build/consent-embed/block.json
+#: build/consent-section/block.json
 msgctxt "block keyword"
 msgid "consent"
 msgstr "zustimmung"
 
 #: build/consent-embed/block.json
+#: build/consent-section/block.json
 msgctxt "block keyword"
 msgid "embed"
 msgstr "einbetten"
+
+#: build/consent-section/block.json
+msgctxt "block title"
+msgid "Consent Section"
+msgstr "Bereich mit Zustimmung"
+
+#: build/consent-section/block.json
+msgctxt "block description"
+msgid "Wraps any blocks — a third-party widget, a custom HTML embed, a group of embeds — and renders them only after the visitor consents to the named service."
+msgstr "Umschließt beliebige Blöcke – ein Widget eines Drittanbieters, eigenen HTML-Code, mehrere Einbettungen – und zeigt sie erst nach Zustimmung zum angegebenen Dienst an."
+
+#: build/consent-section/block.json
+msgctxt "block keyword"
+msgid "html"
+msgstr "html"
+
+#: build/consent-section/block.json
+msgctxt "block keyword"
+msgid "widget"
+msgstr "widget"

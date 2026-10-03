@@ -8,7 +8,7 @@ Stable tag: 1.0.0
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
-Click-to-load embeds for Google Maps, YouTube, Vimeo, Google Calendar and OpenStreetMap. Nothing loads from the third party before consent.
+Click-to-load embeds and consent sections: maps, videos, calendars or any other blocks load only after the visitor agrees.
 
 == Description ==
 
@@ -19,6 +19,7 @@ BroCode Consent Embed shows a placeholder instead. The iframe is created only af
 = Features =
 
 * **Consent Embed block** for Google Maps, Google Calendar, YouTube, Vimeo and OpenStreetMap. Paste a link or a whole `<iframe>` snippet.
+* **Consent Section block for everything else.** Wrap any blocks in it, such as a Custom HTML widget, a booking form, a social feed or a group of embeds, and name the service. The blocks stay inert until the visitor consents: no image, iframe or script inside loads before that.
 * **Existing embeds are covered too.** YouTube and Vimeo videos from the core Embed block, and bare video URLs in classic content, get the same placeholder automatically. No content needs rewriting.
 * **Privacy-friendly players.** YouTube loads from `youtube-nocookie.com`, Vimeo with `dnt=1`.
 * **"Always load" per service.** Visitors can tick a box to load, say, YouTube on every page from then on. The choice is stored only in their browser (localStorage). No cookie, nothing on the server.
@@ -56,6 +57,12 @@ To leave a core oEmbed untouched, return `false` from `brocode_consent_embed_gat
 
 == Frequently Asked Questions ==
 
+= What can go inside a Consent Section? =
+
+Any blocks. The section renders them into an inert `<template>` element and inserts them only after consent, so images, iframes and inline scripts inside do not load before that. Scripts or styles a block loads globally, outside its own markup, are not held back. Check that the third party's code sits inside the section, for example in a Custom HTML block.
+
+Embeds inside a section for the same service load together with it. An embed of a different service, for example a YouTube video inside an Instagram section, still asks for its own consent.
+
 = Does this replace my cookie banner? =
 
 No. It makes sure embeds wait for consent. Visitors can give that consent per embed, or your banner can give it through the WP Consent API.
@@ -73,6 +80,7 @@ The choice lives in the visitor's own browser storage. Clearing site data for yo
 1. A Google Map before consent.
 2. A YouTube video from the core Embed block, gated automatically.
 3. Block settings in the editor.
+4. A Consent Section around custom content, with its service settings.
 
 == Changelog ==
 
