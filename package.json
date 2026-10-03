@@ -1,0 +1,26 @@
+{
+	"name": "brocode-consent-embed",
+	"version": "1.0.0",
+	"description": "Click-to-load, consent-gated embeds for WordPress.",
+	"author": "Benjamin Rosenberger <bensch.rosenberger@gmail.com>",
+	"license": "MIT",
+	"private": true,
+	"files": [
+		"brocode-consent-embed.php",
+		"includes",
+		"build",
+		"src",
+		"languages",
+		"readme.txt",
+		"LICENSE"
+	],
+	"scripts": {
+		"build": "wp-scripts build",
+		"start": "wp-scripts start",
+		"lint:js": "wp-scripts lint-js src",
+		"plugin-zip": "wp-scripts plugin-zip"
+	},
+	"devDependencies": {
+		"@wordpress/scripts": "^30.0.0"
+	}
+}

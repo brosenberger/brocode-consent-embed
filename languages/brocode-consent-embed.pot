@@ -1,0 +1,165 @@
+# Copyright (C) 2026 Benjamin Rosenberger
+# This file is distributed under the MIT.
+msgid ""
+msgstr ""
+"Project-Id-Version: BroCode Consent Embed 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/brocode-consent-embed\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-10-03T14:31:55+02:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: brocode-consent-embed\n"
+
+#. Plugin Name of the plugin
+#: brocode-consent-embed.php
+msgid "BroCode Consent Embed"
+msgstr ""
+
+#. Plugin URI of the plugin
+#. Author URI of the plugin
+#: brocode-consent-embed.php
+msgid "https://brocode.at"
+msgstr ""
+
+#. Description of the plugin
+#: brocode-consent-embed.php
+msgid "Click-to-load embeds for Google Maps, Google Calendar, YouTube, Vimeo and OpenStreetMap. Nothing is loaded from the third party until the visitor consents. Also gates existing YouTube and Vimeo embeds, and honours the WP Consent API."
+msgstr ""
+
+#. Author of the plugin
+#: brocode-consent-embed.php
+msgid "Benjamin Rosenberger"
+msgstr ""
+
+#: build/consent-embed/render.php:44
+msgid "Paste a Google Maps, Google Calendar, YouTube, Vimeo or OpenStreetMap link."
+msgstr ""
+
+#: includes/providers.php:57
+msgid "Google Maps"
+msgstr ""
+
+#: includes/providers.php:65
+msgid "Google Calendar"
+msgstr ""
+
+#: includes/providers.php:73
+msgid "YouTube"
+msgstr ""
+
+#: includes/providers.php:80
+msgid "Vimeo"
+msgstr ""
+
+#: includes/providers.php:87
+msgid "OpenStreetMap"
+msgstr ""
+
+#. translators: 1: service name, e.g. YouTube, 2: company receiving the data, e.g. Google
+#: includes/render.php:58
+#, php-format
+msgid "This content is provided by %1$s. Loading it sends data such as your IP address to %2$s."
+msgstr ""
+
+#: includes/render.php:76
+msgid "Privacy policy"
+msgstr ""
+
+#. translators: %s: service name, e.g. YouTube
+#: includes/render.php:83
+#, php-format
+msgid "Load %s"
+msgstr ""
+
+#. translators: %s: service name, e.g. YouTube
+#: includes/render.php:92
+#, php-format
+msgid "Always load %s on this site"
+msgstr ""
+
+#: includes/render.php:95
+msgid "Open in new tab"
+msgstr ""
+
+#: build/consent-embed/index.js:1
+msgid "Embed"
+msgstr ""
+
+#: build/consent-embed/index.js:1
+msgid "Embed link"
+msgstr ""
+
+#: build/consent-embed/index.js:1
+msgid "Google Maps or Google Calendar embed link, a YouTube or Vimeo video link, or an OpenStreetMap embed link. A pasted <iframe> snippet works too."
+msgstr ""
+
+#: build/consent-embed/index.js:1
+msgid "Title (for screen readers)"
+msgstr ""
+
+#: build/consent-embed/index.js:1
+msgid "Privacy notice"
+msgstr ""
+
+#: build/consent-embed/index.js:1
+#, js-format
+msgid "Leave empty for the default text. %s is replaced with the service name."
+msgstr ""
+
+#: build/consent-embed/index.js:1
+msgid "Height (px, maps and calendars)"
+msgstr ""
+
+#: build/consent-embed/block.json
+msgctxt "block title"
+msgid "Consent Embed"
+msgstr ""
+
+#: build/consent-embed/block.json
+msgctxt "block description"
+msgid "Google Maps, Google Calendar, YouTube, Vimeo or OpenStreetMap embed that only loads after the visitor clicks to consent."
+msgstr ""
+
+#: build/consent-embed/block.json
+msgctxt "block keyword"
+msgid "maps"
+msgstr ""
+
+#: build/consent-embed/block.json
+msgctxt "block keyword"
+msgid "calendar"
+msgstr ""
+
+#: build/consent-embed/block.json
+msgctxt "block keyword"
+msgid "youtube"
+msgstr ""
+
+#: build/consent-embed/block.json
+msgctxt "block keyword"
+msgid "vimeo"
+msgstr ""
+
+#: build/consent-embed/block.json
+msgctxt "block keyword"
+msgid "gdpr"
+msgstr ""
+
+#: build/consent-embed/block.json
+msgctxt "block keyword"
+msgid "privacy"
+msgstr ""
+
+#: build/consent-embed/block.json
+msgctxt "block keyword"
+msgid "consent"
+msgstr ""
+
+#: build/consent-embed/block.json
+msgctxt "block keyword"
+msgid "embed"
+msgstr ""

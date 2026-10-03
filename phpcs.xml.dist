@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<ruleset name="BroCode Consent Embed">
+    <file>brocode-consent-embed.php</file>
+    <file>includes</file>
+    <file>src</file>
+    <arg name="extensions" value="php"/>
+
+    <rule ref="PSR12">
+        <exclude name="PSR1.Files.SideEffects.FoundWithSymbols"/>
+        <exclude name="PSR12.Files.FileHeader.SpacingAfterBlock"/>
+        <exclude name="Generic.WhiteSpace.ScopeIndent"/>
+        <exclude name="Generic.Files.LineLength.TooLong"/>
+    </rule>
+    <rule ref="WordPress.Security"/>
+    <rule ref="WordPress.WP.I18n">
+        <properties>
+            <property name="text_domain" type="array">
+                <element value="brocode-consent-embed"/>
+            </property>
+        </properties>
+    </rule>
+    <rule ref="WordPress.NamingConventions.PrefixAllGlobals">
+        <properties>
+            <property name="prefixes" type="array">
+                <element value="brocode_consent_embed"/>
+                <element value="BroCode\ConsentEmbed"/>
+            </property>
+        </properties>
+    </rule>
+    <rule ref="PHPCompatibilityWP"/>
+
+    <config name="minimum_wp_version" value="6.5"/>
+    <config name="testVersion" value="8.1-"/>
+</ruleset>
