@@ -1,6 +1,6 @@
 {
 	"name": "brocode-consent-embed",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "Click-to-load, consent-gated embeds for WordPress.",
 	"author": "Benjamin Rosenberger <bensch.rosenberger@gmail.com>",
 	"license": "MIT",
@@ -10,7 +10,7 @@
 		"includes",
 		"build",
 		"src",
-		"languages",
+		"languages/brocode-consent-embed.pot",
 		"readme.txt",
 		"LICENSE"
 	],

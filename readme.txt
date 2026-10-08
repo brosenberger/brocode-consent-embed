@@ -1,10 +1,10 @@
 === BroCode Consent Embed ===
-Contributors: brosenberger
+Contributors: benschrosenberger
 Tags: gdpr, privacy, consent, youtube, google maps
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
@@ -82,7 +82,22 @@ The choice lives in the visitor's own browser storage. Clearing site data for yo
 3. Block settings in the editor.
 4. A Consent Section around custom content, with its service settings.
 
+== External services ==
+
+The plugin itself sends nothing anywhere. Its job is to keep third-party content out of the page until the visitor agrees: only after a click on "Load" (or an earlier "Always load" choice for that service, stored in the visitor's browser) does the visitor's browser load the embed directly from the provider. The provider then receives the visitor's IP address, browser details, the page address and any cookies it sets, under its own terms.
+
+* Google Maps, Google Calendar and YouTube, provided by Google: [Terms of Service](https://policies.google.com/terms), [Privacy Policy](https://policies.google.com/privacy).
+* Vimeo, provided by Vimeo, Inc.: [Terms of Service](https://vimeo.com/terms), [Privacy Policy](https://vimeo.com/privacy).
+* OpenStreetMap, provided by the OpenStreetMap Foundation: [Terms of Use](https://osmfoundation.org/wiki/Terms_of_Use), [Privacy Policy](https://osmfoundation.org/wiki/Privacy_Policy).
+
+A Consent Section can hold any other content; whatever it embeds loads under the same rule, and the service named in the block is the one the visitor agrees to.
+
 == Changelog ==
+
+= 1.0.1 =
+* Translations come from translate.wordpress.org; no translation files are bundled.
+* Readme: contributor name, external services.
+
 
 = 1.0.0 =
 * First release.

@@ -23,7 +23,7 @@
  * Plugin Name:       BroCode Consent Embed
  * Plugin URI:        https://brocode.at/modules/brocode-consent-embed/
  * Description:       Click-to-load embeds for Google Maps, Google Calendar, YouTube, Vimeo and OpenStreetMap, plus a consent section that holds back any blocks until the visitor agrees. Also gates existing YouTube and Vimeo embeds, and honours the WP Consent API.
- * Version:           1.0.0
+ * Version:           1.0.1
  * Requires at least: 6.5
  * Requires PHP:      8.1
  * Author:            Benjamin Rosenberger
@@ -56,7 +56,6 @@ add_filter('wp_consent_api_registered_' . plugin_basename(__FILE__), '__return_t
 
 function register(): void
 {
-    load_plugin_textdomain('brocode-consent-embed', false, dirname(plugin_basename(__FILE__)) . '/languages');
     // consent-embed first: it registers the view script and style both blocks use.
     register_block_type(__DIR__ . '/build/consent-embed');
     register_block_type(__DIR__ . '/build/consent-section');
@@ -72,7 +71,7 @@ function register(): void
     );
 
     foreach (['brocode-consent-embed-editor-script', 'brocode-consent-section-editor-script'] as $handle) {
-        wp_set_script_translations($handle, 'brocode-consent-embed', __DIR__ . '/languages');
+        wp_set_script_translations($handle, 'brocode-consent-embed');
     }
 }
 
